@@ -1,23 +1,32 @@
-const BudgetTable = ({ budgetData }) => {
+import styles from "./BudgetTable.module.css";
+
+const BudgetTable = ({ budgetData, removeRow }) => {
   return (
-    <div className="container">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Categoria</th>
-            <th>Quantidade</th>
+    <table className={styles.budgetTable}>
+      <thead>
+        <tr>
+          <th className={styles.header}>Categoria</th>
+          <th className={styles.header}>Quantidade</th>
+          <th className={styles.header}>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {budgetData.map((item, index) => (
+          <tr key={index} className={styles.row}>
+            <td>{item.categoria}</td>
+            <td>{item.quantidade}</td>
+            <td>
+              <button
+                className={styles.removeButton}
+                onClick={() => removeRow(index)}
+              >
+                Remover Linha
+              </button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {budgetData.map((item, index) => (
-            <tr key={index}>
-              <td>{item.categoria}</td>
-              <td>{item.quantidade}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
