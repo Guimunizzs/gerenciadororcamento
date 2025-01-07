@@ -24,6 +24,7 @@ const BudgetForm = ({ addRow }) => {
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
           placeholder="Categoria"
+          required
         />
         <input
           className={styles.input}
@@ -31,6 +32,7 @@ const BudgetForm = ({ addRow }) => {
           value={quantidade}
           onChange={(e) => setQuantidade(e.target.value)}
           placeholder="Quantidade"
+          required
         />
         <button type="submit" className={styles.button}>
           Adicionar

@@ -12,11 +12,15 @@ function App() {
     setBudgetData([...budgetData, { categoria, quantidade }]);
   };
 
+  const removeRow = (index) => {
+    setBudgetData((prev) => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="App">
       <h1>Gerenciador de Orçamento</h1>
       <BudgetForm addRow={addRow} />
-      <BudgetTable budgetData={budgetData} />
+      <BudgetTable budgetData={budgetData} removeRow={removeRow} />
     </div>
   );
 }
